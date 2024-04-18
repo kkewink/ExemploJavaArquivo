@@ -11,7 +11,7 @@ public class Sistema {
 		int opcao = 0;
 		do {
 			// \n
-			System.out.println("1 - Criar \n2 - Editar \n3 - Deletar \n4 - Listar \n5 - Listar Especifico \n6 - Login \n9 - Sair\n");
+			System.out.println("Banco de Dados \n \nUsuarios\n1 - Criar \n2 - Editar \n3 - Deletar \n4 - Listar \n5 - Listar Especifico \n6 - Login \n\nProduto \n7 - ProdutoCadastro \n8 - Editar Produtos \n9 - deleta Produto \n10 - Listar Produtos\n11 - Produto Unico\n99 - Sair\n");
 			
 			// 5 - listar Especifico
 			// Qual id voce seja vizualizar?
@@ -42,6 +42,26 @@ public class Sistema {
 			}
 			case 6:{
 				hm.login();
+				break;
+			}
+			case 7:{
+				hm.criarP();
+				break;
+			}
+			case 8:{
+				hm.editarProduto();
+				break;
+			}
+			case 9:{
+				hm.deletaProduto();
+				break;
+			}
+			case 10:{
+				hm.listarProdutos();
+				break;
+			}
+			case 11:{
+				hm.produtoUnico();
 				break;
 			}
 			

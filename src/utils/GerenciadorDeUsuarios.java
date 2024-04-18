@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-
 import models.Usuario;
 
 public class GerenciadorDeUsuarios {
@@ -66,7 +65,7 @@ public class GerenciadorDeUsuarios {
 
 	public void deletarUsuario(int id) {
 		List<Usuario> usuarios = lerUsuarios();
-
+                                                                      
 		if (usuarios.removeIf(usuario -> usuario.getId() == id)) {
 			reescreverArquivo(usuarios);
 			System.out.println("Usuario deletado com sucesso");
@@ -154,4 +153,6 @@ public class GerenciadorDeUsuarios {
 		}
 
 	}
+	
+	
 }
