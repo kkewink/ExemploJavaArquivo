@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import models.Produto;
-import models.Usuario;
 
 public class GerenciadorDeProdutos {
 
@@ -56,7 +55,7 @@ public class GerenciadorDeProdutos {
 			String linha; // linha => 1;nome;senha
 			// percorrer todas as linhas enquanto seja diferente de vazio
 			while ((linha = br.readLine()) != null) {
-				String[] partes = linha.split(";"); // Dividir em tres partes
+				String[] partes = linha.split("|"); // Dividir em tres partes
 				produtos.add(new Produto(Integer.parseInt(partes[0]), partes[1], Double.parseDouble(partes[2]),
 						Integer.parseInt(partes[3])));
 			}
@@ -94,6 +93,7 @@ public class GerenciadorDeProdutos {
 		} else {
 			System.out.println("Produto não encontrado");
 		}
+		System.out.println("Produto editado com sucesso!");
 	}
 
 	public void deletarProduto(long idP) {
@@ -132,4 +132,13 @@ public class GerenciadorDeProdutos {
 			}
 		}
 	}
+
+	public void somarPreco() {
+		List<Produto> produtos = lerProduto();
+		for (Produto produto : produtos) {
+
+		}
+
+	}
+
 }

@@ -14,7 +14,7 @@ public class GerenciadorDeUsuarios {
 
 	private static final String NOME_ARQUIVO = "usuarios.txt";
 
-	// Verificar a existencia do nosso branco e criar caso não exista
+	// Verificar a existencia do nosso banco e criar caso não exista
 	public void verificaECria(String nomeArquivo) {
 		// file => arquivo
 		File arquivo = new File(nomeArquivo);
@@ -22,7 +22,7 @@ public class GerenciadorDeUsuarios {
 		if (arquivo.exists()) {
 			System.out.println("Banco funcionando!");
 		} else {
-			// tent criar, caso de erro, exibir o erro
+			// tenta criar, caso de erro, exibir o erro
 			try {
 				// Criar o novo arquivo
 				arquivo.createNewFile();
@@ -65,7 +65,7 @@ public class GerenciadorDeUsuarios {
 
 	public void deletarUsuario(int id) {
 		List<Usuario> usuarios = lerUsuarios();
-                                                                      
+
 		if (usuarios.removeIf(usuario -> usuario.getId() == id)) {
 			reescreverArquivo(usuarios);
 			System.out.println("Usuario deletado com sucesso");
@@ -146,13 +146,35 @@ public class GerenciadorDeUsuarios {
 				acesso = false;
 			}
 		}
-		if (acesso == true) {
+		if (acesso) {
 			System.out.println("Login Efetivado!");
 		} else {
 			System.out.println("ACESSO NEGADO");
 		}
 
 	}
-	
-	
+
+	public void novaSenha(String login, String senha, String newSenha) {
+		List<Usuario> usuarios = lerUsuarios();
+		boolean acesso = false;
+
+		for (Usuario usuario : usuarios) {
+			if (usuario.getNome().equals(login) && usuario.getSenha().equals(senha)) {
+				acesso = true;
+				usuario.setSenha(newSenha);
+
+			} else {
+
+				acesso = false;
+			}
+
+		}
+		if (acesso == true) {
+			reescreverArquivo(usuarios);
+			System.out.println("Login Atualizado!");
+		} else {
+			System.out.println("ACESSO NEGADO");
+		}
+	}
+
 }
