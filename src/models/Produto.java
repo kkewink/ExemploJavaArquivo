@@ -39,9 +39,9 @@ public class Produto {
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
 	}
-	
+	@Override
 	public String toString() {
-		return nome + ";" + idP + ";" + quantidade + ";" + preco;
+		return idP + ";" + nome  + ";" + preco + ";" + quantidade;
 	}
 
 }

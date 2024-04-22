@@ -167,7 +167,6 @@ public class GerenciadorDeUsuarios {
 
 				acesso = false;
 			}
-
 		}
 		if (acesso == true) {
 			reescreverArquivo(usuarios);

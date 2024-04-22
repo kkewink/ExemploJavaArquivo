@@ -69,7 +69,7 @@ public class Sistema {
 				HandleMenuP hmp = new HandleMenuP();
 				do {
 					
-					System.out.println("Bando de Dados Produto\n1 - Criar \n2 - Editar \n3 - Deletar\n4 - Listar\n5 - Dado Unico \n6 - Custo total \n7- Total de produtos\n9 - Sair");
+					System.out.println("Bando de Dados Produto\n1 - Criar \n2 - Editar \n3 - Deletar\n4 - Listar\n5 - Dado Unico \n6 - Custo total \n7 - Total de produtos\n9 - Sair");
 					escolhaP = sc.nextInt();
 					
 					switch(escolhaP ) {

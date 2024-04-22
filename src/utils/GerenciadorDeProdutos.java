@@ -55,7 +55,7 @@ public class GerenciadorDeProdutos {
 			String linha; // linha => 1;nome;senha
 			// percorrer todas as linhas enquanto seja diferente de vazio
 			while ((linha = br.readLine()) != null) {
-				String[] partes = linha.split("|"); // Dividir em tres partes
+				String[] partes = linha.split(";"); // Dividir em tres partes
 				produtos.add(new Produto(Integer.parseInt(partes[0]), partes[1], Double.parseDouble(partes[2]),
 						Integer.parseInt(partes[3])));
 			}
@@ -85,15 +85,15 @@ public class GerenciadorDeProdutos {
 				produto.setNome(novoNome);
 				produto.setPreco(novoPreco);
 				produto.setQuantidade(novaquantidade);
+				reescreverArquivo(produtos);
+				System.out.println("Produto editado com sucesso!");
+				encontrado = true;
 			}
 		}
-		if (encontrado) {
-			reescreverArquivo(produtos);
-			System.out.println("Produto editado com sucesso!");
-		} else {
+		if (!encontrado) {
 			System.out.println("Produto não encontrado");
+
 		}
-		System.out.println("Produto editado com sucesso!");
 	}
 
 	public void deletarProduto(long idP) {
@@ -111,7 +111,7 @@ public class GerenciadorDeProdutos {
 		List<Produto> produtos = lerProduto();
 
 		if (produtos.isEmpty()) {
-			System.err.println("Nenhum usuario cadastrado");
+			System.err.println("Nenhum produto cadastrado");
 		} else {
 			System.out.println("Lista dos Produtos");
 			for (Produto produto : produtos) {
@@ -125,20 +125,36 @@ public class GerenciadorDeProdutos {
 
 	public void produtoUnico(long idP) {
 		List<Produto> produtos = lerProduto();
+		boolean encontrado = false;
 		for (Produto produto : produtos) {
 			if (produto.getIdP() == idP) {
 				System.out.println("ID: " + produto.getIdP() + "| Nome: " + produto.getNome() + "| Preço: "
 						+ produto.getPreco() + "| Quantidade: " + produto.getQuantidade());
+				encontrado = true;
+
 			}
+
+		}
+		if (encontrado == false) {
+			System.out.println("Produto nao encontrado");
 		}
 	}
 
-	public void somarPreco() {
+	public void custoTotal() {
 		List<Produto> produtos = lerProduto();
+		double custo = 0;
 		for (Produto produto : produtos) {
-
+			custo += produto.getPreco()* produto.getQuantidade();
 		}
-
+		 System.out.println(custo);
+	}
+	public void totalProduto() {
+		List<Produto> produtos = lerProduto();
+		int total = 0;
+		for(Produto produto : produtos) {
+			total += produto.getQuantidade();
+		}
+		System.out.println(total);
 	}
 
 }
