@@ -20,30 +20,136 @@ public class HandleMenu {
 	}
 
 	public void criar() {
-		System.out.println("Digite o nome:");
-		String nome = sc.next();
-		System.out.println("Digite uma senha:");
-		String senha = sc.next();
+		String nome = "";
+		String senha = "";
+		int id = 0;
 
-		int id = getNextId();
+		boolean nomeE = false;
+		while (nomeE == false) {
+			System.out.println("Digite o nome:");
+			try {
+				nome = sc.nextLine();
+				if (nome.length() == 0) {
+					System.err.println("NÂO DEIXE ESPAÇO EM BRANCO");
+				}
+				if (nome.length() < 3) {
+					System.err.println("MINIMO DE CARACTERES = 3");
+				} else {
+					nomeE = true;
+				}
+
+			} catch (Exception e) {
+
+			}
+		}
+
+		boolean senhaE = false;
+		while (senhaE == false) {
+			System.out.println("Digite uma senha:");
+			try {
+				senha = sc.next();
+				if (senha.length() < 6) {
+					System.err.println("MINIMO 6");
+				}
+				if (senha.equalsIgnoreCase(nome)) {
+					System.err.println("NOME E SENHA NÂO PODEM SER IGUAIS");
+				} else {
+					senhaE = true;
+				}
+			} catch (Exception e) {
+			}
+		}
+
+		id = getNextId();
 		Usuario u = new Usuario(id, nome, senha);
 		gs.adicionarUsuario(u);
 	}
 
 	public void editar() {
 		System.out.println("Digite o ID do usuario:");
-		int id = sc.nextInt();
-		System.out.println("Digite o novo nome:");
-		String nome = sc.next();
-		System.out.println("Digite a nova senha:");
-		String senha = sc.next();
+
+		int id = 0;
+
+		boolean idE = false;
+		while (idE == false) {
+			System.out.println("Digite a nova quantidade:");
+			try {
+				id = sc.nextInt();
+				if (id < 0) {
+					System.err.println("DIGITE UM VALOR POSITIVO");
+				} else {
+					idE = true;
+				}
+			} catch (Exception e) {
+				System.err.println("DIGITE APENAS NUMEROS");
+			}
+
+		}
+
+		String nome = "";
+
+		boolean nomeE = false;
+		while (nomeE == false) {
+			System.out.println("Digite o novo nome:");
+			try {
+				nome = sc.next();
+				if (nome.length() == 0) {
+					System.err.println("NÂO DEIXE ESPAÇO EM BRANCO");
+
+				}
+				if (nome.length() < 3) {
+					System.err.println("MINIMO DE CARACTERES = 3");
+
+				} else {
+
+					nomeE = true;
+				}
+
+			} catch (Exception e) {
+			}
+		}
+
+		String senha = "";
+
+		boolean senhaE = false;
+		while (senhaE == false) {
+			System.out.println("Digite a nova senha:");
+			try {
+				senha = sc.next();
+				if (senha.length() < 6) {
+					System.err.println("MINIMO 6");
+				}
+				if (senha.equalsIgnoreCase(nome)) {
+					System.err.println("NOME E SENHA NÂO PODEM SER IGUAIS");
+				} else {
+					senhaE = true;
+				}
+			} catch (Exception e) {
+			}
+		}
 
 		gs.editarUsuario(id, nome, senha);
 	}
 
 	public void deletar() {
-		System.out.println("Digite o ID do usuario a ser deletado:");
-		int id = sc.nextInt();
+		int id = 0;
+
+		boolean idE = false;
+		while (idE == false) {
+			System.out.println("Digite o ID do usuario a ser deletado:");
+			try {
+				id = sc.nextInt();
+				if (id < 0) {
+					System.err.println("DIGITE UM VALOR POSITIVO");
+
+				} else {
+					idE = true;
+				}
+			} catch (Exception e) {
+				System.err.println("DIGITE APENAS NUMEROS");
+			}
+		}
+		
 		gs.deletarUsuario(id);
 	}
 
@@ -69,32 +175,127 @@ public class HandleMenu {
 	}
 
 	public void dadoUnico() {
-		System.out.println("Digite o ID do usuario Especifico:");
-		int id = sc.nextInt();
+		int id = 0;
+
+		boolean idE = false;
+		while (idE == false) {
+			System.out.println("Digite o ID do usuario Especifico:");
+			try {
+				id = sc.nextInt();
+				if (id < 0) {
+					System.err.println("DIGITE UM VALOR POSITIVO");
+
+				} else {
+					idE = true;
+				}
+			} catch (Exception e) {
+				System.err.println("DIGITE APENAS NUMEROS");
+			}
+		}
 		gs.listarEspecifico(id);
 
 	}
 
 	public void login() {
-		System.out.println("Digite seu login :");
-		String nome = sc.next();
-		System.out.println("Digite sua senha :");
+		String nome = "";
+
+		boolean nomeE = false;
+		while (nomeE == false) {
+			System.out.println("Digite seu login :");
+			try {
+				nome = sc.nextLine();
+				if (nome.length() == 0) {
+					System.err.println("NÂO DEIXE ESPAÇO EM BRANCO");
+				}
+				if (nome.length() < 3) {
+					System.err.println("MINIMO DE CARACTERES = 3");
+				} else {
+					nomeE = true;
+				}
+
+			} catch (Exception e) {
+
+			}
+		}
 		String senha = sc.next();
 
+		boolean senhaE = false;
+		while (senhaE == false) {
+			System.out.println("Digite sua senha :");
+			try {
+				senha = sc.next();
+				if (senha.length() < 6) {
+					System.err.println("MINIMO 6");
+				}
+				if (senha.equalsIgnoreCase(nome)) {
+					System.err.println("NOME E SENHA NÂO PODEM SER IGUAIS");
+				} else {
+					senhaE = true;
+				}
+			} catch (Exception e) {
+			}
+		}
 		gs.login(nome, senha);
 
 	}
 
 	public void trocarSenha() {
-		System.out.println("Digite seu login :");
-		String nome = sc.next();
-		
-		System.out.println("Digite uma senha:");
-		String senha = sc.next();
-		
-		System.out.println("Digite a nova senha:");
-		String newSenha = sc.next();
+		String nome = "";
 
+		boolean nomeE = false;
+		while (nomeE == false) {
+			System.out.println("Digite seu login :");
+			try {
+				nome = sc.nextLine();
+				if (nome.length() == 0) {
+					System.err.println("NÂO DEIXE ESPAÇO EM BRANCO");
+				}
+				if (nome.length() < 3) {
+					System.err.println("MINIMO DE CARACTERES = 3");
+				} else {
+					nomeE = true;
+				}
+
+			} catch (Exception e) {
+
+			}
+		}
+
+		String senha = sc.next();
+		boolean senhaE = false;
+		while (senhaE == false) {
+			System.out.println("Digite uma senha:");
+			try {
+				senha = sc.next();
+				if (senha.length() < 6) {
+					System.err.println("MINIMO 6");
+				}
+				if (senha.equalsIgnoreCase(nome)) {
+					System.err.println("NOME E SENHA NÂO PODEM SER IGUAIS");
+				} else {
+					senhaE = true;
+				}
+			} catch (Exception e) {
+			}
+		}
+
+		String newSenha = "";
+		boolean nsenhaE = false;
+		while (nsenhaE == false) {
+			System.out.println("Digite a nova senha:");
+			try {
+				newSenha = sc.next();
+				if (newSenha.length() < 6) {
+					System.err.println("MINIMO 6");
+				}
+				if (newSenha.equalsIgnoreCase(senha) && newSenha.equalsIgnoreCase(nome)) {
+					System.err.println("NOME E SENHA NÂO PODEM SER IGUAIS");
+				} else {
+					senhaE = true;
+				}
+			} catch (Exception e) {
+			}
+		}
 		gs.novaSenha(nome, senha, newSenha);
 	}
 

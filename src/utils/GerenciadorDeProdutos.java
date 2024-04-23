@@ -72,7 +72,7 @@ public class GerenciadorDeProdutos {
 				bw.newLine();
 			}
 		} catch (IOException e) {
-			System.out.println("Ocurreu um erro ao reescrever o arquivo: " + e.getMessage());
+			System.err.println("Ocurreu um erro ao reescrever o arquivo: " + e.getMessage());
 		}
 	}
 
@@ -91,7 +91,7 @@ public class GerenciadorDeProdutos {
 			}
 		}
 		if (!encontrado) {
-			System.out.println("Produto não encontrado");
+			System.err.println("Produto não encontrado");
 
 		}
 	}
@@ -103,7 +103,7 @@ public class GerenciadorDeProdutos {
 			reescreverArquivo(produtos);
 			System.out.println("Produto deletado com sucesso");
 		} else {
-			System.out.println("Produto não encontrado");
+			System.err.println("Produto não encontrado");
 		}
 	}
 
@@ -136,7 +136,7 @@ public class GerenciadorDeProdutos {
 
 		}
 		if (encontrado == false) {
-			System.out.println("Produto nao encontrado");
+			System.err.println("Produto nao encontrado");
 		}
 	}
 

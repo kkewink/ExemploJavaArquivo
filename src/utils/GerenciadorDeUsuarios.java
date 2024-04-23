@@ -70,7 +70,7 @@ public class GerenciadorDeUsuarios {
 			reescreverArquivo(usuarios);
 			System.out.println("Usuario deletado com sucesso");
 		} else {
-			System.out.println("Usuario não encontrado");
+			System.err.println("Usuario não encontrado");
 		}
 	}
 
@@ -81,7 +81,7 @@ public class GerenciadorDeUsuarios {
 				bw.newLine();
 			}
 		} catch (IOException e) {
-			System.out.println("Ocurreu um erro ao reescrever o arquivo: " + e.getMessage());
+			System.err.println("Ocurreu um erro ao reescrever o arquivo: " + e.getMessage());
 		}
 	}
 
@@ -90,7 +90,7 @@ public class GerenciadorDeUsuarios {
 		List<Usuario> usuarios = lerUsuarios();
 		// nehum usuario
 		if (usuarios.isEmpty()) {
-			System.out.println("Nenhum usuario cadastrado");
+			System.err.println("Nenhum usuario cadastrado");
 		} else {
 			System.out.println("Lista de usuarios");
 			for (Usuario usuario : usuarios) {
@@ -116,7 +116,7 @@ public class GerenciadorDeUsuarios {
 			reescreverArquivo(usuarios);
 			System.out.println("Usuario editado com sucesso!");
 		} else {
-			System.out.println("Usuario não encontrados");
+			System.err.println("Usuario não encontrados");
 		}
 
 	}
@@ -149,7 +149,7 @@ public class GerenciadorDeUsuarios {
 		if (acesso) {
 			System.out.println("Login Efetivado!");
 		} else {
-			System.out.println("ACESSO NEGADO");
+			System.err.println("ACESSO NEGADO");
 		}
 
 	}
@@ -172,7 +172,7 @@ public class GerenciadorDeUsuarios {
 			reescreverArquivo(usuarios);
 			System.out.println("Login Atualizado!");
 		} else {
-			System.out.println("ACESSO NEGADO");
+			System.err.println("ACESSO NEGADO");
 		}
 	}
 
